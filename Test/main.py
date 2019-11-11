@@ -3,7 +3,7 @@ from tkinter import *
 from openpyxl import load_workbook
 
 if __name__ == "__main__":
-    def Set_all_value(x):
+    def Set_all_value_Var(x):
         Te.Cost_per_unit = sheet_val[x+'4'].value
         Te.Cost_price = sheet_val[x+'5'].value
         Te.Raw_and_materials = sheet_val[x+'6'].value # Сырье и материалы
@@ -16,6 +16,19 @@ if __name__ == "__main__":
         Te.Stocks_fin_prod = sheet_val[x+'13'].value # Запасы готовой продукции
         Te.Accounts_receivable = sheet_val[x+'14'].value # Дебеторская задолженность
         Te.Account_payable = sheet_val[x+'15'].value # Кредиторская задолженность
+    def Set_all_value_inf():
+        size = ['B','C','D','E','F']
+        wb_val  = load_workbook(filename='Kursach.xlsx',data_only=True)
+        sheet_val = wb_val["Общая информация"]
+        for i in range(len(size)):
+            Te.Value_of_production.append(sheet_val[size[i]+'12'].value)
+        print(Te.Value_of_production)
+    def Residual_value_equipment():
+        size = ['B', 'C', 'D', 'E', 'F']
+        wb_val = load_workbook(filename='Kursach.xlsx', data_only=True)
+        sheet_val = wb_val["Общая информация"]
+        for i in range(len(size)):
+            Te.Residual_value_equipment.append(sheet_val[size[i] + '13'].value)
 
 
     wb_val = load_workbook(filename="Kursach.xlsx",data_only=True)
@@ -31,8 +44,9 @@ if __name__ == "__main__":
              'S','T','U','V','W','X','Y','Z']
         if s>=1:        #Заполнение переменных, соответсвтующими значениями Excel'a
             Num =a[s-1]
-            Set_all_value(Num)
-
+            Set_all_value_Var(Num)
+            Set_all_value_inf()
+            Residual_value_equipment()
             print(Te.Cost_price)
             l['text'] = Te.Cost_per_unit
         else:

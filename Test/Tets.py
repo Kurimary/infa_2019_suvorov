@@ -13,8 +13,7 @@ if __name__ == "__main__":
     print(support(2, 7))
 else:
     print("Imported library")
-    def yo():
-        Cost_per_unit = 0  # Цена за единицу продукции
+    Cost_per_unit = 0  # Цена за единицу продукции
     Cost_price = 0 # Себестоимость
     Raw_and_materials = 0 # Сырье и материалы
     Wage = 0 # Заработная плата
@@ -26,6 +25,8 @@ else:
     Stocks_fin_prod = 0 # Запасы готовой продукции
     Accounts_receivable = 0 # Дебеторская задолженность
     Account_payable = 0 # Кредиторская задолженность
+    Value_of_production = []
+    Residual_value_equipment = []
 
 
 
